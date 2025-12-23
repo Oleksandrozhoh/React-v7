@@ -1,47 +1,39 @@
-import { Component } from "react"
+import { useEffect, useState } from 'react'
 
-class LifecycleLogger extends Component {
+const LifecycleLogger = () => {
+  const [count, setCount] = useState(0)
 
-    
-    constructor(props) {
-        super(props)
-        // this is how we define state in class components
-        this.state = {
-            count: 0
-        }
+  const updateCount = () => {
+    setCount((prevCount) => prevCount + 1)
+  }
+
+  // Component Did Mount + Update + Unmount
+  useEffect(() => {
+    console.log('LifecycleLogger Mounted')
+
+    return () => {
+      console.log('LifecycleLogger Unmounted')
     }
+  }, [])
 
-    // has to be an arrow function to bind 'this'
-    // if using regular function, need to bind in constructor manually
-    updateCount = () => {
-        this.setState({count: this.state.count + 1})
-    }
+  // no access to previous props or state here
+  // but we can access prevstate and props via useRef if needed
+  useEffect(() => {
+    if (count > 0) console.log('LifecycleLogger Updated - Count:', count)
+  }, [count])
 
-    // required method in class components
-    render() {
-        return (
-            <div className="flex flex-col gap-4 items-center p-4 border border-gray-300 rounded-lg shadow-lg bg-white">
-                <h2 className="text-lg font-semibold">Lifecycle Logger</h2>
-                <p >Count: {this.state.count}</p>
-                <button className="secondary-btnmt-2 px-3 py-1 bg-green-500 text-white rounded hover:bg-green-700 transition" 
-                onClick={this.updateCount}>Update</button>
-            </div>
-        )
-    }
-
-    // Lifecycle Methods
-    componentDidMount() {
-        console.log("LifecycleLogger: Component Mounted")
-    }
-
-    componentDidUpdate() {
-        console.log("LifecycleLogger: Component Updated")
-        console.log("Current Count:", this.state.count)
-    }
-
-    componentWillUnmount() {
-        console.log("LifecycleLogger: Component Unmounted")
-    }
+  return (
+    <div className="flex flex-col gap-4 items-center p-4 border border-gray-300 rounded-lg shadow-lg bg-white">
+      <h2 className="text-lg font-semibold">Lifecycle Logger (FC)</h2>
+      <p>Count: {count}</p>
+      <button
+        className="secondary-btn mt-2 px-3 py-1 bg-green-500 text-white rounded hover:bg-green-700 transition"
+        onClick={updateCount}
+      >
+        Update
+      </button>
+    </div>
+  )
 }
 
-export default LifecycleLogger;
+export default LifecycleLogger
