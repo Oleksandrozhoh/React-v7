@@ -1,0 +1,436 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto 30px;
+  padding: 0 20px;
+}
+
+h1 {
+  color: white;
+  font-size: 2.5rem;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Top Navigation Bar */
+.top-nav {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 4px;
+  padding: 16px 40px 12px 40px;
+  top: 0;
+  z-index: 100;
+}
+
+.top-nav a {
+  color: #fff;
+  font-size: 1.13rem;
+  font-weight: 600;
+  text-decoration: underline !important;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.top-nav a:hover, .top-nav a.active {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Select Dropdown */
+.limit-select {
+  padding: 10px 16px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  background-color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.limit-select:hover {
+  border-color: #667eea;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.limit-select:focus {
+  border-color: #764ba2;
+  box-shadow: 0 0 0 3px rgba(118, 75, 162, 0.2);
+}
+
+/* Sort Select Dropdown */
+.sort-select {
+  padding: 10px 16px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  background-color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  outline: none;
+  margin-left: 8px;
+}
+
+.sort-select:hover {
+  border-color: #667eea;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.sort-select:focus {
+  border-color: #764ba2;
+  box-shadow: 0 0 0 3px rgba(118, 75, 162, 0.2);
+}
+
+/* Search Input */
+.search-input {
+  padding: 10px 16px;
+  font-size: 1rem;
+  color: #333;
+  background: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  margin-left: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+  transition: border-color 0.3s, box-shadow 0.3s;
+  outline: none;
+}
+
+.search-input:focus {
+  border-color: #764ba2;
+  box-shadow: 0 0 0 3px rgba(118, 75, 162, 0.15);
+}
+
+.search-input::placeholder {
+  color: #aaa;
+  opacity: 1;
+}
+
+/* Grid Layout */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Coin Card */
+.coin-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.coin-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Remove underline from all links inside coin-card, even nested */
+a,
+a .coin-card *,
+.coin-card a,
+.coin-card a:active,
+.coin-card * {
+  text-decoration: none !important;
+}
+
+p.coin-card-mc {
+  color: #666;
+  font-size: 0.9rem;
+  margin: 8px 0 0 0;
+}
+
+/* Coin Header */
+.coin-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.coin-image {
+  width: 50px;
+  height: 50px;
+}
+
+.coin-header h2 {
+  font-size: 1.4rem;
+  color: #333;
+  margin: 0;
+}
+
+.symbol {
+  color: #888;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin: 5px 0 0 0;
+}
+
+/* Price */
+.coin-card > p:first-of-type {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  margin: 15px 0;
+}
+
+/* Positive/Negative Styles */
+.possitive {
+  color: #22c55e;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: #f0fdf4;
+  padding: 8px 12px;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+.negative {
+  color: #ef4444;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: #fef2f2;
+  padding: 8px 12px;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+/* Error */
+.error {
+  text-align: center;
+  color: white;
+  background-color: rgba(239, 68, 68, 0.8);
+  padding: 15px;
+  border-radius: 8px;
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* Spinner */
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.rating-container {
+  color: #333;
+}
+
+/* Controls Bar (Show/Filter) */
+.controls-bar {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 12px 24px;
+  margin-left: auto;
+}
+
+.controls-bar label {
+  font-weight: 600;
+  color: #363535;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 1rem;
+}
+
+@media (max-width: 700px) {
+  .controls-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 10px;
+  }
+}
+
+/* Make sure select and input fit in the bar */
+.controls-bar select,
+.controls-bar input {
+  margin: 0;
+}
+
+.no-results {
+  text-align: center;
+  color: #363535;
+  font-size: 1.2rem;
+  margin-top: 40px;
+}
+
+/* About Page Styling */
+.about {
+  max-width: 900px;
+  margin: 40px auto 0 auto;
+  background: rgba(255,255,255,0.97);
+  border-radius: 18px;
+  box-shadow: 0 6px 32px rgba(0,0,0,0.10);
+  padding: 40px 36px 32px 36px;
+}
+
+.about h1 {
+  color: #764ba2;
+  font-size: 2.7rem;
+  margin-bottom: 18px;
+  font-weight: 800;
+  text-shadow: 1px 2px 8px rgba(118,75,162,0.08);
+}
+
+.about p {
+  color: #333;
+  font-size: 1.15rem;
+  margin-bottom: 14px;
+  line-height: 1.6;
+}
+
+.about ul {
+  margin: 0 0 16px 24px;
+  color: #4b5563;
+  font-size: 1.08rem;
+}
+
+.about li {
+  margin-bottom: 7px;
+  list-style: disc inside;
+}
+
+/* Coin Details Page Styles */
+.coin-details-container {
+  max-width: 500px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 6px 32px 0 rgba(80, 63, 205, 0.12);
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.coin-details-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.coin-details-image {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #f3f4f6;
+  object-fit: contain;
+  box-shadow: 0 2px 8px 0 rgba(80, 63, 205, 0.08);
+}
+
+.coin-details-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.coin-details-symbol {
+  color: #888;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-top: 0.2rem;
+  letter-spacing: 1px;
+}
+
+.coin-details-info {
+  width: 100%;
+  margin-top: 1.5rem;
+}
+
+.coin-details-info p {
+  font-size: 1.15rem;
+  margin: 0.5rem 0;
+}
+
+.coin-details-price {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0.5rem 0;
+}
+
+.coin-details-marketcap {
+  color: #666;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.coin-details-change.positive {
+  color: #22c55e;
+  background: #e7fbe9;
+  padding: 0.3em 0.7em;
+  border-radius: 8px;
+  font-weight: 600;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.coin-details-change.negative {
+  color: #ef4444;
+  background: #fde8e8;
+  padding: 0.3em 0.7em;
+  border-radius: 8px;
+  font-weight: 600;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
